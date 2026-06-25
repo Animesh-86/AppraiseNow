@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_1920012_apprai_0.AN_BRScanner</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>AN_BRScanner</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var AN_BRScanner = Class.create();
+
+AN_BRScanner.prototype = {
+
+    scan: function(scanId) {
+
+        var scanGR = new GlideRecord('x_1920012_apprai_0_an_scan');
+
+        if (!scanGR.get(scanId))
+            return;
+
+        var scopeName = scanGR.app_scope.toString();
+
+        var issueCount = 0;
+
+        var brGR = new GlideRecord('sys_script');
+        brGR.addQuery('sys_scope.scope', scopeName);
+        brGR.query();
+
+        while (brGR.next()) {
+
+            if (gs.nil(brGR.condition)) {
+
+                this.createFinding(
+                    scanId,
+                    'maintainability',
+                    'medium',
+                    'Missing Condition',
+                    'Business Rule "' +
+                    brGR.name +
+                    '" has no condition.'
+                );
+
+                issueCount++;
+            }
+
+            var scriptText = brGR.script.toString();
+
+            if (scriptText.length > 1000) {
+
+                this.createFinding(
+                    scanId,
+                    'maintainability',
+                    'high',
+                    'Large Business Rule',
+                    'Business Rule "' +
+                    brGR.name +
+                    '" contains a large script.'
+                );
+
+                issueCount++;
+            }
+        }
+
+        var score = Math.max(0, 100 - (issueCount * 10));
+
+        var scorecard = new GlideRecord('x_1920012_apprai_0_an_scorecard');
+        scorecard.addQuery('scan', scanId);
+        scorecard.query();
+
+        if (scorecard.next()) {
+            scorecard.maintainability_score = score;
+            scorecard.update();
+        }
+    },
+
+    createFinding: function(scanId, dimension, severity, title, description) {
+
+        var finding = new GlideRecord('x_1920012_apprai_0_an_finding');
+
+        finding.initialize();
+        finding.scan = scanId;
+        finding.dimension = dimension;
+        finding.severity = severity;
+        finding.title = title;
+        finding.description = description;
+        finding.insert();
+    },
+
+    type: 'AN_BRScanner'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-06-24 20:47:06</sys_created_on>
+        <sys_id>c0c020f7c36947d41f1571fdd401310b</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>AN_BRScanner</sys_name>
+        <sys_package display_value="AppraiseNow" source="x_1920012_apprai_0">2a9018f3c3e547d41f1571fdd401317b</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="AppraiseNow">2a9018f3c3e547d41f1571fdd401317b</sys_scope>
+        <sys_update_name>sys_script_include_c0c020f7c36947d41f1571fdd401310b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-06-24 21:18:57</sys_updated_on>
+    </sys_script_include>
+</record_update>

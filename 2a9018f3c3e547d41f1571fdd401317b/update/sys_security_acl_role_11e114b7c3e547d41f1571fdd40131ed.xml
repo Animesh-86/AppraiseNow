@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-06-24 19:41:53</sys_created_on>
+        <sys_id>11e114b7c3e547d41f1571fdd40131ed</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1920012_apprai_0_an_scan.x_1920012_apprai_0.an_admin</sys_name>
+        <sys_package display_value="AppraiseNow" source="x_1920012_apprai_0">2a9018f3c3e547d41f1571fdd401317b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AppraiseNow">2a9018f3c3e547d41f1571fdd401317b</sys_scope>
+        <sys_security_acl display_value="x_1920012_apprai_0_an_scan">59e114b7c3e547d41f1571fdd40131e4</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_11e114b7c3e547d41f1571fdd40131ed</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-06-24 19:41:53</sys_updated_on>
+        <sys_user_role display_value="x_1920012_apprai_0.an_admin" name="x_1920012_apprai_0.an_admin">7a9018f3c3e547d41f1571fdd4013199</sys_user_role>
+    </sys_security_acl_role>
+</record_update>

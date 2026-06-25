@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="4ef4147fc3e547d41f1571fdd401318f" label="Benchmark" max_length="40" name="x_1920012_apprai_0_an_benchmark" type="collection">
+        <element label="Bottom Quartile" max_length="40" name="bottom_quartile" type="integer"/>
+        <element label="Top Quartile" max_length="40" name="top_quartile" type="integer"/>
+        <element label="Community Average" max_length="40" name="community_average" type="integer"/>
+        <element choice="3" default="security" display="true" label="Dimension" max_length="255" name="dimension" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Security" sequence="0" value="security"/>
+                <element inactive_on_update="false" label="Performance" sequence="1" value="performance"/>
+                <element inactive_on_update="false" label="Maintainability" sequence="3" value="maintainability"/>
+                <element inactive_on_update="false" label="Update Set" sequence="4" value="update_set"/>
+                <element inactive_on_update="false" label="Quality" sequence="2" value="quality"/>
+            </choice>
+        </element>
+    </element>
+</database>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_1920012_apprai_0.AN_ScanManager</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>AN_ScanManager</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var AN_ScanManager = Class.create();
+
+AN_ScanManager.prototype = {
+
+    runScan: function(scanId) {
+
+        try {
+
+            gs.info('Scan Started');
+
+            new AN_ACLScanner().scan(scanId);
+
+            new AN_BRScanner().scan(scanId);
+
+            new AN_ScriptScanner().scan(scanId);
+
+            new AN_PerfScanner().scan(scanId);
+
+            new AN_UpdateSetScanner().scan(scanId);
+
+			new AN_BenchmarkEngine().evaluate(scanId);
+
+            new AN_GradeCalculator().calculate(scanId);
+
+            gs.info('Scan Complete');
+
+        } catch (ex) {
+
+            gs.error('ScanManager Error: ' + ex);
+        }
+    },
+
+    type: 'AN_ScanManager'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-06-24 20:05:34</sys_created_on>
+        <sys_id>7fc65473c32947d41f1571fdd4013183</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>AN_ScanManager</sys_name>
+        <sys_package display_value="AppraiseNow" source="x_1920012_apprai_0">2a9018f3c3e547d41f1571fdd401317b</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="AppraiseNow">2a9018f3c3e547d41f1571fdd401317b</sys_scope>
+        <sys_update_name>sys_script_include_7fc65473c32947d41f1571fdd4013183</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-06-24 21:22:18</sys_updated_on>
+    </sys_script_include>
+</record_update>

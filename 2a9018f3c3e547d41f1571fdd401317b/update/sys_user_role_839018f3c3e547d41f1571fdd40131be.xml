@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role">
+    <sys_user_role action="INSERT_OR_UPDATE">
+        <assignable_by/>
+        <can_delegate>true</can_delegate>
+        <description>Can view scan reports and scorecards.</description>
+        <elevated_privilege>false</elevated_privilege>
+        <federated_id>M57cknqivvhQGwcKYfgkzvB5qm8Sw0OcCRj6SswcIpE=</federated_id>
+        <grantable>true</grantable>
+        <includes_roles/>
+        <name>x_1920012_apprai_0.an_viewer</name>
+        <scoped_admin>false</scoped_admin>
+        <suffix>an_viewer</suffix>
+        <sys_class_name>sys_user_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-06-24 19:36:15</sys_created_on>
+        <sys_id>839018f3c3e547d41f1571fdd40131be</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1920012_apprai_0.an_viewer</sys_name>
+        <sys_package display_value="AppraiseNow" source="x_1920012_apprai_0">2a9018f3c3e547d41f1571fdd401317b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AppraiseNow">2a9018f3c3e547d41f1571fdd401317b</sys_scope>
+        <sys_update_name>sys_user_role_839018f3c3e547d41f1571fdd40131be</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-06-24 19:36:15</sys_updated_on>
+    </sys_user_role>
+</record_update>

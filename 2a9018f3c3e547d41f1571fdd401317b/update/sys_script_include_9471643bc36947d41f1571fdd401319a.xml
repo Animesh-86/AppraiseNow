@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_1920012_apprai_0.AN_UpdateSetScanner</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>AN_UpdateSetScanner</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var AN_UpdateSetScanner = Class.create();
+
+AN_UpdateSetScanner.prototype = {
+
+    scan: function(scanId) {
+
+        var score = 100;
+        var issueCount = 0;
+
+        var usGR = new GlideRecord('sys_update_set');
+
+        usGR.addActiveQuery();
+        usGR.orderByDesc('sys_updated_on');
+        usGR.query();
+
+        if (usGR.next()) {
+
+            var updateSetName = usGR.getValue('name');
+
+            if (
+                updateSetName.toLowerCase() == 'default' ||
+                updateSetName.indexOf('Default') > -1
+            ) {
+
+                this.createFinding(
+                    scanId,
+                    'update_set',
+                    'high',
+                    'Default Update Set in use',
+                    'Application changes are being tracked in the Default Update Set.'
+                );
+
+                issueCount++;
+            }
+
+            var recordCount = parseInt(
+                usGR.getValue('customer_updates') || 0,
+                10
+            );
+
+            if (recordCount === 0) {
+
+                this.createFinding(
+                    scanId,
+                    'update_set',
+                    'medium',
+                    'Empty Update Set',
+                    'No customer updates found in update set.'
+                );
+
+                issueCount++;
+            }
+        } else {
+
+            this.createFinding(
+                scanId,
+                'update_set',
+                'critical',
+                'No Update Set Found',
+                'No active update set was found.'
+            );
+
+            issueCount += 2;
+        }
+
+        score = 100 - (issueCount * 20);
+
+        if (score < 0)
+            score = 0;
+
+        var scorecard = new GlideRecord(
+            'x_1920012_apprai_0_an_scorecard'
+        );
+
+        scorecard.addQuery('scan', scanId);
+        scorecard.query();
+
+        if (scorecard.next()) {
+
+            scorecard.update_set_score = score;
+            scorecard.update();
+        }
+
+        gs.info(
+            'Update Set Scanner Complete. Issues=' +
+            issueCount
+        );
+    },
+
+    createFinding: function(
+        scanId,
+        dimension,
+        severity,
+        title,
+        description
+    ) {
+
+        var finding = new GlideRecord(
+            'x_1920012_apprai_0_an_finding'
+        );
+
+        finding.initialize();
+
+        finding.scan = scanId;
+        finding.dimension = dimension;
+        finding.severity = severity;
+        finding.title = title;
+        finding.description = description;
+
+        finding.insert();
+    },
+
+    type: 'AN_UpdateSetScanner'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-06-24 20:49:58</sys_created_on>
+        <sys_id>9471643bc36947d41f1571fdd401319a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>AN_UpdateSetScanner</sys_name>
+        <sys_package display_value="AppraiseNow" source="x_1920012_apprai_0">2a9018f3c3e547d41f1571fdd401317b</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="AppraiseNow">2a9018f3c3e547d41f1571fdd401317b</sys_scope>
+        <sys_update_name>sys_script_include_9471643bc36947d41f1571fdd401319a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-06-24 20:49:58</sys_updated_on>
+    </sys_script_include>
+</record_update>

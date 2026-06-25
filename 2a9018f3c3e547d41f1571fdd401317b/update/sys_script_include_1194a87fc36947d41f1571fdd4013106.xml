@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_1920012_apprai_0.AN_GradeCalculator</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>AN_GradeCalculator</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var AN_GradeCalculator =
+    Class.create();
+
+AN_GradeCalculator.prototype = {
+
+    calculate: function(scanId) {
+
+        var scorecard =
+            new GlideRecord(
+                'x_1920012_apprai_0_an_scorecard'
+            );
+
+        scorecard.addQuery(
+            'scan',
+            scanId
+        );
+
+        scorecard.query();
+
+        if (!scorecard.next())
+            return;
+
+        var security =
+            parseInt(
+                scorecard.security_score || 0,
+                10
+            );
+
+        var performance =
+            parseInt(
+                scorecard.performance_score || 0,
+                10
+            );
+
+        var quality =
+            parseInt(
+                scorecard.quality_score || 0,
+                10
+            );
+
+        var maintainability =
+            parseInt(
+                scorecard.maintainability_score || 0,
+                10
+            );
+
+        var updateSet =
+            parseInt(
+                scorecard.update_set_score || 0,
+                10
+            );
+
+        var overall =
+            (security * 0.35) +
+            (performance * 0.25) +
+            (quality * 0.20) +
+            (maintainability * 0.15) +
+            (updateSet * 0.05);
+
+        overall =
+            Math.round(overall);
+
+        var grade = 'F';
+
+        if (overall >= 90)
+            grade = 'A';
+        else if (overall >= 80)
+            grade = 'B';
+        else if (overall >= 70)
+            grade = 'C';
+        else if (overall >= 60)
+            grade = 'D';
+
+        scorecard.overall_score =
+            overall;
+
+        scorecard.grade =
+            grade;
+
+        scorecard.update();
+
+        var scanGR =
+            new GlideRecord(
+                'x_1920012_apprai_0_an_scan'
+            );
+
+        if (scanGR.get(scanId)) {
+
+            scanGR.overall_score =
+                overall;
+
+            scanGR.overall_grade =
+                grade;
+
+            scanGR.status =
+                'Completed';
+
+            scanGR.update();
+        }
+    },
+
+    type:
+        'AN_GradeCalculator'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-06-24 21:03:49</sys_created_on>
+        <sys_id>1194a87fc36947d41f1571fdd4013106</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>AN_GradeCalculator</sys_name>
+        <sys_package display_value="AppraiseNow" source="x_1920012_apprai_0">2a9018f3c3e547d41f1571fdd401317b</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="AppraiseNow">2a9018f3c3e547d41f1571fdd401317b</sys_scope>
+        <sys_update_name>sys_script_include_1194a87fc36947d41f1571fdd4013106</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-06-24 21:14:16</sys_updated_on>
+    </sys_script_include>
+</record_update>

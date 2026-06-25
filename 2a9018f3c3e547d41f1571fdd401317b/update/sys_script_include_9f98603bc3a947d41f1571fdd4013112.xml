@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_1920012_apprai_0.AN_BenchmarkEngine</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>AN_BenchmarkEngine</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var AN_BenchmarkEngine = Class.create();
+
+AN_BenchmarkEngine.prototype = {
+
+    evaluate: function(scanId) {
+
+        var scorecard =
+            new GlideRecord(
+                'x_1920012_apprai_0_an_scorecard'
+            );
+
+        scorecard.addQuery(
+            'scan',
+            scanId
+        );
+
+        scorecard.query();
+
+        if (!scorecard.next())
+            return;
+
+        this.compare(
+            scanId,
+            'security',
+            parseInt(scorecard.security_score, 10)
+        );
+
+        this.compare(
+            scanId,
+            'performance',
+            parseInt(scorecard.performance_score, 10)
+        );
+
+        this.compare(
+            scanId,
+            'quality',
+            parseInt(scorecard.quality_score, 10)
+        );
+
+        this.compare(
+            scanId,
+            'maintainability',
+            parseInt(scorecard.maintainability_score, 10)
+        );
+
+        this.compare(
+            scanId,
+            'update_set',
+            parseInt(scorecard.update_set_score, 10)
+        );
+    },
+
+    compare: function(
+        scanId,
+        dimension,
+        score
+    ) {
+
+        var bench =
+            new GlideRecord(
+                'x_1920012_apprai_0_an_benchmark'
+            );
+
+        bench.addQuery(
+            'dimension',
+            dimension
+        );
+
+        bench.query();
+
+        if (!bench.next())
+            return;
+
+        var top =
+            parseInt(
+                bench.top_quartile,
+                10
+            );
+
+        var avg =
+            parseInt(
+                bench.community_average,
+                10
+            );
+
+        var bottom =
+            parseInt(
+                bench.bottom_quartile,
+                10
+            );
+
+        var finding =
+            new GlideRecord(
+                'x_1920012_apprai_0_an_finding'
+            );
+
+        if (score >= top) {
+
+            finding.initialize();
+
+            finding.scan = scanId;
+            finding.dimension = dimension;
+            finding.severity = 'low';
+            finding.title =
+                'Top Quartile Performance';
+
+            finding.description =
+                dimension +
+                ' score (' +
+                score +
+                ') is above industry top quartile (' +
+                top +
+                ').';
+
+            finding.insert();
+
+        } else if (score < avg) {
+
+            finding.initialize();
+
+            finding.scan = scanId;
+            finding.dimension = dimension;
+            finding.severity = 'medium';
+            finding.title =
+                'Below Community Average';
+
+            finding.description =
+                dimension +
+                ' score (' +
+                score +
+                ') is below community average (' +
+                avg +
+                ').';
+
+            finding.insert();
+        }
+    },
+
+    type: 'AN_BenchmarkEngine'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-06-24 21:21:24</sys_created_on>
+        <sys_id>9f98603bc3a947d41f1571fdd4013112</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>AN_BenchmarkEngine</sys_name>
+        <sys_package display_value="AppraiseNow" source="x_1920012_apprai_0">2a9018f3c3e547d41f1571fdd401317b</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="AppraiseNow">2a9018f3c3e547d41f1571fdd401317b</sys_scope>
+        <sys_update_name>sys_script_include_9f98603bc3a947d41f1571fdd4013112</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-06-24 21:21:24</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="b2035c3bc3e547d41f1571fdd40131af" label="Finding" max_length="40" name="x_1920012_apprai_0_an_finding" type="collection">
+        <element attributes="edge_encryption_enabled=true" default="javascript:global.getNextObjNumberPadded();" display="true" label="Number" max_length="40" name="number" type="string"/>
+        <element label="Score Impact" max_length="40" name="score_impact" type="integer"/>
+        <element label="AI Explanation" max_length="40" name="ai_explanation" type="html"/>
+        <element label="Description" max_length="4000" name="description" type="string"/>
+        <element label="Remediation" max_length="40" name="remediation" type="html"/>
+        <element label="Scan" max_length="32" name="scan" reference="x_1920012_apprai_0_an_scan" type="reference"/>
+        <element choice="3" label="Severity" max_length="40" name="severity" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Low" sequence="3" value="low"/>
+                <element inactive_on_update="false" label="High" sequence="1" value="high"/>
+                <element inactive_on_update="false" label="Critical" sequence="0" value="critical"/>
+                <element inactive_on_update="false" label="Medium" sequence="2" value="medium"/>
+            </choice>
+        </element>
+        <element label="Title" max_length="200" name="title" type="string"/>
+        <element choice="3" default="security" label="Dimension" max_length="255" name="dimension" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Maintainability" sequence="3" value="maintainability"/>
+                <element inactive_on_update="false" label="Performance" sequence="1" value="performance"/>
+                <element inactive_on_update="false" label="Security" sequence="0" value="security"/>
+                <element inactive_on_update="false" label="Update Set" sequence="4" value="update_set"/>
+                <element inactive_on_update="false" label="Quality" sequence="2" value="quality"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="scan"/>
+        </index>
+    </element>
+</database>
