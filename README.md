@@ -1,9 +1,5 @@
 # AppraiseNow – ServiceNow Application Quality Assessment Platform
 
-<p align="center">
-  <img src="docs/dashboard-overview.png" alt="AppraiseNow Dashboard" width="100%">
-</p>
-
 ## Overview
 
 AppraiseNow is a ServiceNow-based application quality assessment platform that automates the auditing of custom applications by analyzing security, performance, maintainability, code quality, and update set practices.
