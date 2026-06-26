@@ -327,4 +327,3 @@ Display Dashboard Analytics
 **Animesh Sharma**
 
 ServiceNow Application Developer | Java Backend Developer
-<img width="1923" height="1164" alt="executive-overview" src="https://github.com/user-attachments/assets/614ba07e-b91d-4e9c-954d-503ad4fd27d8" />
