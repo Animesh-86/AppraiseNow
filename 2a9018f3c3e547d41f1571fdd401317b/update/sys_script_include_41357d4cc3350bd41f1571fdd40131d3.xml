@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_1920012_apprai_0.AN_AIAdvisor</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>AN_AIAdvisor</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var AN_AIAdvisor = Class.create();
+
+AN_AIAdvisor.prototype = {
+
+    analyze: function(scanId) {
+
+        var scorecardGR = new GlideRecord('x_1920012_apprai_0_an_scorecard');
+
+        scorecardGR.addQuery('scan', scanId);
+        scorecardGR.query();
+
+        if (!scorecardGR.next()) {
+            gs.error("Scorecard not found.");
+            return;
+        }
+
+        // Collect Findings
+
+        var findings = [];
+
+        var findingGR = new GlideRecord('x_1920012_apprai_0_an_finding');
+        findingGR.addQuery('scan', scanId);
+        findingGR.query();
+
+        while (findingGR.next()) {
+
+            findings.push({
+                severity: findingGR.getValue('severity'),
+                dimension: findingGR.getValue('dimension'),
+                title: findingGR.getValue('title'),
+                description: findingGR.getValue('description')
+            });
+
+        }
+
+        // Payload
+
+        var payload = {
+
+            security: parseInt(scorecardGR.getValue('security_score') || 0, 10),
+            performance: parseInt(scorecardGR.getValue('performance_score') || 0, 10),
+            quality: parseInt(scorecardGR.getValue('quality_score') || 0, 10),
+            maintainability: parseInt(scorecardGR.getValue('maintainability_score') || 0, 10),
+            update_set: parseInt(scorecardGR.getValue('update_set_score') || 0, 10),
+            overall_score: parseInt(scorecardGR.getValue('overall_score') || 0, 10),
+            grade: scorecardGR.getValue('grade'),
+            findings: findings
+
+        };
+
+        var request = {
+
+            model: "llama-3.3-70b-versatile",
+
+            messages: [
+
+                {
+                    role: "system",
+                    content:
+                    "You are a senior ServiceNow Architect. " +
+                    "Analyze this application scan. " +
+                    "Return ONLY valid JSON with keys: " +
+                    "summary, strengths, risks, recommendations, grade_reason."
+                },
+
+                {
+                    role: "user",
+                    content: JSON.stringify(payload)
+                }
+
+            ],
+
+            temperature: 0.2
+
+        };
+
+        try {
+
+            var endpoint = gs.getProperty("x_1920012_apprai_0.groq_endpoint");
+            var apiKey = gs.getProperty("x_1920012_apprai_0.groq_api_ke");
+
+            gs.info("Groq Endpoint : " + endpoint);
+            gs.info("API Key Length : " + (apiKey ? apiKey.length : 0));
+
+            var rm = new sn_ws.RESTMessageV2();
+
+            rm.setEndpoint(endpoint);
+            rm.setHttpMethod("POST");
+
+            rm.setRequestHeader(
+                "Authorization",
+                "Bearer " + apiKey
+            );
+
+            rm.setRequestHeader(
+                "Content-Type",
+                "application/json"
+            );
+
+            rm.setRequestBody(JSON.stringify(request));
+
+            var response = rm.execute();
+
+            var status = response.getStatusCode();
+            var body = response.getBody();
+
+            gs.info("Groq Status : " + status);
+            gs.info("Groq Response : " + body);
+
+            if (status != 200) {
+
+                gs.error("Groq HTTP Error : " + status);
+                return;
+
+            }
+
+            var json = JSON.parse(body);
+
+            if (!json.choices || json.choices.length == 0) {
+
+                gs.error("Groq returned invalid response.");
+                return;
+
+            }
+
+            var content = json.choices[0].message.content;
+			content = content
+				.replace(/```json/g, "")
+    			.replace(/```/g, "")
+    			.trim();
+
+var ai = JSON.parse(content);
+
+            gs.info("AI Content : " + content);
+
+            var ai;
+
+            try {
+
+                ai = JSON.parse(content);
+
+            } catch (e) {
+
+                gs.error("AI returned non-JSON response.");
+                return;
+
+            }
+
+            scorecardGR.ai_summary = ai.summary || "";
+
+            scorecardGR.ai_strengths =
+                ai.strengths ?
+                ai.strengths.join("\n") : "";
+
+            scorecardGR.ai_risks =
+                ai.risks ?
+                ai.risks.join("\n") : "";
+
+            scorecardGR.ai_reccomendations =
+    			ai.recommendations ? 
+				ai.recommendations.join("\n") : "";
+
+            scorecardGR.ai_grade_reason =
+                ai.grade_reason || "";
+			
+			gs.info(ai.recommendations.join("\n"));
+			
+            scorecardGR.update();
+
+            gs.info("AI Report Generated Successfully.");
+
+        } catch (ex) {
+
+            gs.error("AI Advisor Error : " + ex);
+
+        }
+
+    },
+
+    type: "AN_AIAdvisor"
+
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-06-25 21:35:12</sys_created_on>
+        <sys_id>41357d4cc3350bd41f1571fdd40131d3</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>AN_AIAdvisor</sys_name>
+        <sys_package display_value="AppraiseNow" source="x_1920012_apprai_0">2a9018f3c3e547d41f1571fdd401317b</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="AppraiseNow">2a9018f3c3e547d41f1571fdd401317b</sys_scope>
+        <sys_update_name>sys_script_include_41357d4cc3350bd41f1571fdd40131d3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-06-25 22:40:38</sys_updated_on>
+    </sys_script_include>
+</record_update>

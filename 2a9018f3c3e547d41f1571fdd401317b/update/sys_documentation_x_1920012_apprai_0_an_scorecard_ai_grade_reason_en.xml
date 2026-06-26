@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="ai_grade_reason" label="AI Grade Reason" language="en" table="x_1920012_apprai_0_an_scorecard">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>ai_grade_reason</element>
+            <help/>
+            <hint/>
+            <label>AI Grade Reason</label>
+            <language>en</language>
+            <name>x_1920012_apprai_0_an_scorecard</name>
+            <plural/>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-06-25 21:34:59</sys_created_on>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_name>AI Grade Reason</sys_name>
+            <sys_package display_value="AppraiseNow" source="x_1920012_apprai_0">2a9018f3c3e547d41f1571fdd401317b</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="AppraiseNow">2a9018f3c3e547d41f1571fdd401317b</sys_scope>
+            <sys_update_name>sys_documentation_x_1920012_apprai_0_an_scorecard_ai_grade_reason_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-06-25 21:35:03</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

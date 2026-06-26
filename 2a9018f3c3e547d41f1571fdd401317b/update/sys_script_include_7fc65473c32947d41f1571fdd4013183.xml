@@ -29,9 +29,11 @@ AN_ScanManager.prototype = {
 
             new AN_UpdateSetScanner().scan(scanId);
 
+            new AN_GradeCalculator().calculate(scanId);
+
 			new AN_BenchmarkEngine().evaluate(scanId);
 
-            new AN_GradeCalculator().calculate(scanId);
+			new AN_AIAdvisor().analyze(scanId);
 
             gs.info('Scan Complete');
 
@@ -47,13 +49,13 @@ AN_ScanManager.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-06-24 20:05:34</sys_created_on>
         <sys_id>7fc65473c32947d41f1571fdd4013183</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_mod_count>12</sys_mod_count>
         <sys_name>AN_ScanManager</sys_name>
         <sys_package display_value="AppraiseNow" source="x_1920012_apprai_0">2a9018f3c3e547d41f1571fdd401317b</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="AppraiseNow">2a9018f3c3e547d41f1571fdd401317b</sys_scope>
         <sys_update_name>sys_script_include_7fc65473c32947d41f1571fdd4013183</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-06-24 21:22:18</sys_updated_on>
+        <sys_updated_on>2026-06-25 22:17:14</sys_updated_on>
     </sys_script_include>
 </record_update>

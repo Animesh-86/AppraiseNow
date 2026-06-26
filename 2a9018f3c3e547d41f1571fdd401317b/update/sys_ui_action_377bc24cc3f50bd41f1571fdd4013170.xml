@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_action">
+    <sys_ui_action action="INSERT_OR_UPDATE">
+        <action_name/>
+        <active>true</active>
+        <client>false</client>
+        <client_script_v2><![CDATA[function onClick(g_form) {
+
+}]]></client_script_v2>
+        <comments/>
+        <condition/>
+        <form_action>true</form_action>
+        <form_button>true</form_button>
+        <form_button_icon/>
+        <form_button_v2>false</form_button_v2>
+        <form_context_menu>false</form_context_menu>
+        <form_link>false</form_link>
+        <form_menu_button_v2>false</form_menu_button_v2>
+        <form_style/>
+        <format_for_configurable_workspace>false</format_for_configurable_workspace>
+        <hint/>
+        <isolate_script>false</isolate_script>
+        <list_action>false</list_action>
+        <list_banner_button>false</list_banner_button>
+        <list_button>false</list_button>
+        <list_button_icon/>
+        <list_choice>false</list_choice>
+        <list_context_menu>false</list_context_menu>
+        <list_link>false</list_link>
+        <list_save_with_form_button>false</list_save_with_form_button>
+        <list_style/>
+        <messages/>
+        <name>Generate PDF Report</name>
+        <onclick/>
+        <order>100</order>
+        <script><![CDATA[action.setRedirectURL(
+    "x_1920012_apprai_0_an_report.do?sysparm_scan=" + current.getUniqueValue()
+);]]></script>
+        <show_form_icon_only>false</show_form_icon_only>
+        <show_insert>true</show_insert>
+        <show_list_icon_only>false</show_list_icon_only>
+        <show_multiple_update>false</show_multiple_update>
+        <show_query>false</show_query>
+        <show_update>true</show_update>
+        <sys_class_name>sys_ui_action</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-06-25 23:12:30</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>377bc24cc3f50bd41f1571fdd4013170</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Generate PDF Report</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="AppraiseNow" source="x_1920012_apprai_0">2a9018f3c3e547d41f1571fdd401317b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AppraiseNow">2a9018f3c3e547d41f1571fdd401317b</sys_scope>
+        <sys_update_name>sys_ui_action_377bc24cc3f50bd41f1571fdd4013170</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-06-25 23:24:41</sys_updated_on>
+        <table>x_1920012_apprai_0_an_scan</table>
+        <ui11_compatible>true</ui11_compatible>
+        <ui16_compatible>false</ui16_compatible>
+    </sys_ui_action>
+</record_update>

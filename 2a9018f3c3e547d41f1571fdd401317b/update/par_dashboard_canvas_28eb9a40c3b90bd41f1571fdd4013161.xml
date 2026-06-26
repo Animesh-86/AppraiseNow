@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="par_dashboard_canvas">
+    <par_dashboard_canvas action="INSERT_OR_UPDATE">
+        <dashboard display_value="AppraiseNow Dashboard">d8311a08c3390bd41f1571fdd401315f</dashboard>
+        <dashboard_tab display_value="AI Insights">2ceb9a40c3b90bd41f1571fdd401315d</dashboard_tab>
+        <layout>[]</layout>
+        <sys_class_name>par_dashboard_canvas</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-06-26 00:23:14</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>28eb9a40c3b90bd41f1571fdd4013161</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package display_value="AppraiseNow" source="x_1920012_apprai_0">2a9018f3c3e547d41f1571fdd401317b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AppraiseNow">2a9018f3c3e547d41f1571fdd401317b</sys_scope>
+        <sys_update_name>par_dashboard_canvas_28eb9a40c3b90bd41f1571fdd4013161</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-06-26 00:23:18</sys_updated_on>
+    </par_dashboard_canvas>
+</record_update>

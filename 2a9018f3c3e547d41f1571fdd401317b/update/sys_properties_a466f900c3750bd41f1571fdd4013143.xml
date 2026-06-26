@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description>Groq API Key</description>
+        <ignore_cache>true</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_1920012_apprai_0.groq_api_ke</name>
+        <read_roles/>
+        <suffix>x_1920012_apprai_0.groq_api_ke</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-06-25 21:41:01</sys_created_on>
+        <sys_id>a466f900c3750bd41f1571fdd4013143</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>x_1920012_apprai_0.groq_api_ke</sys_name>
+        <sys_package display_value="AppraiseNow" source="x_1920012_apprai_0">2a9018f3c3e547d41f1571fdd401317b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AppraiseNow">2a9018f3c3e547d41f1571fdd401317b</sys_scope>
+        <sys_update_name>sys_properties_a466f900c3750bd41f1571fdd4013143</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-06-26 00:28:33</sys_updated_on>
+        <type>string</type>
+        <value/>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=a466f900c3750bd41f1571fdd4013143"/>
+</record_update>

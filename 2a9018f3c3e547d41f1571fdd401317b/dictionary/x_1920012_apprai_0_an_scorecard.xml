@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="102414fbc3e547d41f1571fdd40131f2" label="Scorecard" max_length="40" name="x_1920012_apprai_0_an_scorecard" type="collection">
+        <element label="AI Summary" max_length="4000" name="ai_summary" type="string"/>
+        <element label="AI Strengths" max_length="4000" name="ai_strengths" type="string"/>
+        <element label="AI Grade Reason" max_length="4000" name="ai_grade_reason" type="string"/>
+        <element label="AI Recommendations" max_length="4000" name="ai_reccomendations" type="string"/>
+        <element label="AI Risks" max_length="4000" name="ai_risks" type="string"/>
         <element label="Security Score" max_length="40" name="security_score" type="integer"/>
         <element label="Maintainability Score" max_length="40" name="maintainability_score" type="integer"/>
         <element label="Update Set Score" max_length="40" name="update_set_score" type="integer"/>

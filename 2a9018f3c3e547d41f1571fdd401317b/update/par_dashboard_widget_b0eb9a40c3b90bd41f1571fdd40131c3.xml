@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="par_dashboard_widget">
+    <par_dashboard_widget action="INSERT_OR_UPDATE">
+        <canvas display_value="">aceb9a40c3b90bd41f1571fdd4013135</canvas>
+        <component display_value="Vertical bar">23051643b7e03010097cb81cde11a910</component>
+        <component_props>{"configVersion":"23.0.0-ci-SNAPSHOT","chartVariation":"stacked","yAxisPosition":"bottom","yAxisShowGrid":true,"xAxisWrapLabels":false,"xAxisMaxLabelSize":100,"showClosestSeriesOnHover":true,"xAxisTruncationType":"end","yAxisStyle":"clean","showLegend":true,"showLegendValue":false,"legendPosition":"bottom","legendHorizontalAlignment":"center","legendExpandToFit":false,"showDataLabels":false,"dataLabelPosition":"middle","showStackedValues":"none","showOverlappingLabels":false,"showPercentageOfTotalInTooltip":true,"yAxisHidden":false,"xAxisHidden":false,"colorConfig":{"type":"default"},"newReporting":false,"enableAddZerosAtApi":true,"additionalGroupByConfig":[],"dataSources":[{"isDatabaseView":false,"allowRealTime":true,"label":"Scorecard","sourceType":"table","tableOrViewName":"x_1920012_apprai_0_an_scorecard","preferredVisualizations":["d24d53f60350de7a652caf3188a46ed2"],"id":"dGFibGV4XzE5MjAwMTJfYXBwcmFpXzBfYW5fc2NvcmVjYXJkMTc4MjQzMjE4MzUwMQ==","dataCategories":["trend","group","simple"]}],"showHeader":true,"showTotalAggregate":false,"showSubAggregate":false,"showFirstGroupAggregate":false,"showSecondGroupAggregate":false,"hideMatrixAggregate":false,"lineClamp":1,"headerTitleAlignment":"start","wrapTitle":false,"showLoadingIndicator":false,"showHeaderSeparator":false,"contextMenuActions":[],"headerTitle":"Overall Score Distribution","headingLevel":2,"showBorder":true,"bareBorder":false,"telemetry":null,"showDataPassthrough":false,"showAdditionalGroupBySelector":false,"allowAdditionalGroupByPerMetric":false,"metrics":[{"dataSource":"dGFibGV4XzE5MjAwMTJfYXBwcmFpXzBfYW5fc2NvcmVjYXJkMTc4MjQzMjE4MzUwMQ==","id":"ZEdGaWJHVjRYekU1TWpBd01USmZZWEJ3Y21GcFh6QmZZVzVmYzJOdmNtVmpZWEprTVRjNE1qUXpNakU0TXpVd01RPT0xNzgyNDMyMTg4MDI2","aggregateFunction":"AVG","numberFormat":{"customFormat":false},"axisId":"primary","aggregateField":"overall_score"}],"groupBy":[{"groupBy":[{"dataSource":"dGFibGV4XzE5MjAwMTJfYXBwcmFpXzBfYW5fc2NvcmVjYXJkMTc4MjQzMjE4MzUwMQ==","groupByField":"scan.overall_score","isRange":false,"isChoice":false,"isPaBucket":false}],"maxNumberOfGroups":"ALL","numberOfGroupsBasedOn":"NO_OF_GROUP_BASED_ON_PER_METRIC","showOthers":false,"disableRanges":false}],"filterPerMetric":[],"sortBy":"value","sortByOrder":"desc","trendBy":null,"showChange":false,"showChangePercentage":false,"showTarget":false,"showForecast":false,"showForecastRange":false,"showTrend":false,"showConfidenceBand":false,"showGapPercentage":false,"showSparkline":false,"showMetricLabel":false,"showThreshold":false,"showComment":false,"followFilters":true,"showFilterIcon":true,"enableRealTimeUpdate":false,"enableDrilldown":true,"enableClickAndStay":false,"showDataTable":false,"enableCustomEmptyState":false,"componentId":"i7ycdw97","emptyStateIllustration":"no-data","emptyStateHeading":"No data available.","emptyStateHeadingLevel":3,"emptyStateContent":"There are no scores available for the selected criteria. Contact your admin for more info.","emptyStateAlignment":"vertical-centered","refreshFrequency":null,"hideDevSettings":false,"configPropModifiers":{},"filterConfigurations":"@state.parFilters","showMaximumRange":false,"allowChangeDateRange":false,"showDateRangeByDefault":false,"applyDateRange":false,"numberOfPeriods":3,"showAbsolutePeriod":false,"autoAggregatePeriods":false,"scoreType":null,"showChangeFrom":"previous","useCurrentDateForEnd":false,"period":"M","useDataCache":false,"cacheExpirationTime":0,"showCacheTime":true,"dateFormat":"default","showRefresh":true,"showExportOptions":true,"showFilterAsSeparateSeries":false,"userInfo":"@context.session.user","colors":{}}</component_props>
+        <h>17</h>
+        <name/>
+        <required_translations>[{"comment":"","code":"PAR_DASHBOARD.aceb9a40c3b90bd41f1571fdd4013135.b0eb9a40c3b90bd41f1571fdd40131c3","message":"Scorecard"},{"comment":"","code":"PAR_DASHBOARD.aceb9a40c3b90bd41f1571fdd4013135.b0eb9a40c3b90bd41f1571fdd40131c3","message":"Overall Score Distribution"},{"comment":"","code":"PAR_DASHBOARD.aceb9a40c3b90bd41f1571fdd4013135.b0eb9a40c3b90bd41f1571fdd40131c3","message":"No data available."},{"comment":"","code":"PAR_DASHBOARD.aceb9a40c3b90bd41f1571fdd4013135.b0eb9a40c3b90bd41f1571fdd40131c3","message":"There are no scores available for the selected criteria. Contact your admin for more info."}]</required_translations>
+        <stored_component/>
+        <sys_class_name>par_dashboard_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-06-26 00:23:15</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>b0eb9a40c3b90bd41f1571fdd40131c3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package display_value="AppraiseNow" source="x_1920012_apprai_0">2a9018f3c3e547d41f1571fdd401317b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="AppraiseNow">2a9018f3c3e547d41f1571fdd401317b</sys_scope>
+        <sys_update_name>par_dashboard_widget_b0eb9a40c3b90bd41f1571fdd40131c3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-06-26 00:23:15</sys_updated_on>
+        <visualization/>
+        <w>17</w>
+        <widget_props/>
+        <x>15</x>
+        <y>17</y>
+    </par_dashboard_widget>
+</record_update>
